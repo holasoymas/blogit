@@ -18,16 +18,17 @@ export async function fetchFromServer(endpoint, method, body = null) {
 }
 
 function buildOptions(method, body) {
-  const options = {
-    method,
-    headers: {
-      "Content-Type": "application/json; charset=UTF-8",
-    },
-  };
+  const options = {};
+
+  options.method = method;
 
   if (body) {
     options.body = JSON.stringify(body);
   }
+
+  options.headers = {
+    "Content-Type": "application/json; charset=UTF-8",
+  };
 
   return options;
 }
