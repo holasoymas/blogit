@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Blog</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/nav.css" />
+    <script type="module" src="assets/js/pages/profile.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-left">
+        <div class="logo">BlogLogo</div>
+      </div>
+      <div class="navbar-right">
+        <ul class="nav-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+        <div class="profile-menu">
+          <img src="/home/holasoymas/Pictures/img.png" alt="Profile Picture" class="profile-pic" />
+          <ul class="dropdown-menu">
+            <li><a href="#">Home Page</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container main-content">
+      <!-- Left: Blog Section -->
+      <div class="blog-section">
+        <article class="blog-post">
+          <h2 class="post-title">Sample Blog Post Title 1</h2>
+          <p class="post-meta">Posted on August 26, 2024 by John Doe</p>
+          <img src="/home/holasoymas/Downloads/" alt="Blog Image" class="post-image" />
+          <p class="post-content">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet accumsan arcu.
+            Proin ac dui in felis pulvinar vulputate. Donec fermentum mauris eget augue elementum,
+            vel volutpat libero vehicula. Vestibulum ante ipsum primis in faucibus orci luctus et
+            ultrices posuere cubilia curae.
+          </p>
+        </article>
+
+        <article class="blog-post">
+          <h2 class="post-title">Sample Blog Post Title 2</h2>
+          <p class="post-meta">Posted on August 25, 2024 by Jane Doe</p>
+          <img src="blog-image2.jpg" alt="Blog Image" class="post-image" />
+          <p class="post-content">
+            Nullam vehicula justo ut velit gravida, et ultricies purus elementum. Suspendisse
+            potenti. Vivamus a auctor metus, ut feugiat lacus. Sed laoreet enim at augue
+            ullamcorper, ut volutpat justo hendrerit. Integer ac malesuada purus. Sed volutpat odio
+            vitae arcu ultricies, id ultricies nisi vestibulum.
+          </p>
+        </article>
+
+        <article class="blog-post">
+          <h2 class="post-title">Sample Blog Post Title 3</h2>
+          <p class="post-meta">Posted on August 24, 2024 by Alex Smith</p>
+          <img src="blog-image3.jpg" alt="Blog Image" class="post-image" />
+          <p class="post-content">
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
+            Donec vehicula tristique purus, ac efficitur magna cursus id. Etiam at consectetur
+            felis, sit amet aliquet sem. Duis gravida felis sit amet enim ultricies, et convallis
+            orci laoreet. Phasellus commodo, dui vel bibendum sodales.
+          </p>
+        </article>
+      </div>
+
+      <!-- Right: User Profile Section -->
+      <div class="profile-section">
+        <div class="profile-card" data-userId="">
+          <img src="/home/holasoymas/Pictures/img.png" alt="Profile Picture" class="profile-pic" />
+          <h3 class="profile-name">John Doe</h3>
+          <table class="profile-stats">
+            <tr>
+              <td>Blogs:</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>Likes:</td>
+              <td>200</td>
+            </tr>
+            <tr>
+              <td>Comments:</td>
+              <td>50</td>
+            </tr>
+            <tr>
+              <td>Followers:</td>
+              <td>300</td>
+            </tr>
+          </table>
+        </div>
+        <!-- demo template start  -->
+        <template id="profile-card-template">
+          <div class="profile-card" data-user-id="">
+            <img src="" alt="Profile Picture" class="profile-pic" />
+            <h3 class="profile-name"></h3>
+            <table class="profile-stats">
+              <tr>
+                <td>Blogs:</td>
+                <td class="profile-blogs"></td>
+              </tr>
+              <tr>
+                <td>Likes:</td>
+                <td class="profile-likes"></td>
+              </tr>
+              <tr>
+                <td>Comments:</td>
+                <td class="profile-comments"></td>
+              </tr>
+              <tr>
+                <td>Followers:</td>
+                <td class="profile-followers"></td>
+              </tr>
+            </table>
+          </div>
+        </template>
+      </div>
+      <!--closing of the profile container -->
+    </div>
+    <!-- closing of the entire container-->
+
+    <footer class="footer">
+      <div class="container">
+        <p>&copy; 2024 My Blog. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
