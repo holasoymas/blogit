@@ -1,13 +1,9 @@
-import { fetchFromServer } from "../util/fetcher.js";
+import { fetchProfile } from "../api/user.js";
 
-document.addEventListener("DOMContentLoaded", fetchProfile);
+// cange the fetchProfile to call init and inside init fetchProfile fetchBlog etc
+document.addEventListener("DOMContentLoaded", init);
 
-function fetchProfile() {
-  const params = new URLSearchParams(window.location.search);
-  const uid = params.get("uid");
-  console.log(uid);
-
-  fetchFromServer(`userRoute.php?uid=${encodeURIComponent(uid)}`, "GET")
-    .then((json) => console.log(json))
-    .catch((err) => console.log(err));
+// load user and blogs in the profile
+function init() {
+  fetchProfile();
 }
