@@ -1,0 +1,188 @@
+body,
+h1,
+h2,
+p,
+img,
+table,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+}
+
+.logo {
+  font-size: 24px;
+  text-align: center;
+}
+
+.nav {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 15px;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+/* Blog Section (Left) */
+.blog-section {
+  width: 70%;
+  overflow-y: auto;
+  max-height: 80vh;
+  padding-right: 20px;
+}
+
+.blog-post {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.post-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.post-meta {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.post-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.post-content {
+  margin-bottom: 15px;
+}
+
+/* Profile Section (Right) */
+.profile-section {
+  width: 25%;
+  position: sticky;
+  top: 20px;
+}
+
+.profile-card {
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.profile-card .profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.profile-name {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.profile-stats {
+  width: 100%;
+  text-align: left;
+  font-size: 16px;
+}
+
+.profile-stats td {
+  border-bottom: 1px solid black;
+  padding: 5px 0;
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: 40px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .logo {
+    font-size: 20px;
+  }
+
+  .nav-link {
+    margin: 0 10px;
+  }
+
+  .post-title {
+    font-size: 24px;
+  }
+
+  .main-content {
+    flex-direction: column;
+  }
+
+  .blog-section,
+  .profile-section {
+    width: 100%;
+  }
+
+  .blog-section {
+    padding-right: 0;
+  }
+
+  .profile-section {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .post-title {
+    font-size: 20px;
+  }
+
+  .post-content {
+    font-size: 16px;
+  }
+}
