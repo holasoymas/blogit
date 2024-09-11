@@ -4,14 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple Blog</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="./assets/css/nav.css" />
-    <script type="module" src="assets/js/pages/profile.js"></script>
+    <link rel="stylesheet" href="backend/public/assets/css/style.css" />
+    <link rel="stylesheet" href="backend/public/assets/css/nav.css" />
+    <script type="module" src="backend/public/assets/js/pages/profile.js"></script>
+    <script type="module">
+      import { setProfilePicture } from "./backend/public/assets/js/util/genprofilepic.js";
+      setProfilePicture(".nav-profile-pic", "John", "Doe", "#00f000");
+    </script>
   </head>
   <body>
     <nav class="navbar">
       <div class="navbar-left">
-        <div class="logo">BlogLogo</div>
+        <div class="logo"><a href="#">BLOGIT</a></div>
       </div>
       <div class="navbar-right">
         <ul class="nav-links">
@@ -19,7 +23,12 @@
           <li><a href="#">Privacy Policy</a></li>
         </ul>
         <div class="profile-menu">
-          <img src="/home/holasoymas/Pictures/img.png" alt="Profile Picture" class="profile-pic" />
+          <div class="nav-profile-pic"></div>
+          <!-- <img -->
+          <!--   src="/home/holasoymas/Pictures/img.png" -->
+          <!--   alt="Profile Picture" -->
+          <!--   class="nav-profile-pic" -->
+          <!-- /> -->
           <ul class="dropdown-menu">
             <li><a href="#">Home Page</a></li>
             <li><a href="#">Logout</a></li>
@@ -33,7 +42,7 @@
         <article class="blog-post">
           <h2 class="post-title">Sample Blog Post Title 1</h2>
           <p class="post-meta">Posted on August 26, 2024 by John Doe</p>
-          <img src="/home/holasoymas/Downloads/" alt="Blog Image" class="post-image" />
+          <!-- <img src="/home/holasoymas/Downloads/" alt="Blog Image" class="post-image" /> -->
           <p class="post-content">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet accumsan arcu.
             Proin ac dui in felis pulvinar vulputate. Donec fermentum mauris eget augue elementum,
@@ -45,7 +54,7 @@
         <article class="blog-post">
           <h2 class="post-title">Sample Blog Post Title 2</h2>
           <p class="post-meta">Posted on August 25, 2024 by Jane Doe</p>
-          <img src="blog-image2.jpg" alt="Blog Image" class="post-image" />
+          <!-- <img src="blog-image2.jpg" alt="Blog Image" class="post-image" /> -->
           <p class="post-content">
             Nullam vehicula justo ut velit gravida, et ultricies purus elementum. Suspendisse
             potenti. Vivamus a auctor metus, ut feugiat lacus. Sed laoreet enim at augue
@@ -57,7 +66,7 @@
         <article class="blog-post">
           <h2 class="post-title">Sample Blog Post Title 3</h2>
           <p class="post-meta">Posted on August 24, 2024 by Alex Smith</p>
-          <img src="blog-image3.jpg" alt="Blog Image" class="post-image" />
+          <!-- <img src="blog-image3.jpg" alt="Blog Image" class="post-image" /> -->
           <p class="post-content">
             Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
             Donec vehicula tristique purus, ac efficitur magna cursus id. Etiam at consectetur
