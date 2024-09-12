@@ -7,10 +7,7 @@
     <link rel="stylesheet" href="backend/public/assets/css/style.css" />
     <link rel="stylesheet" href="backend/public/assets/css/nav.css" />
     <script type="module" src="backend/public/assets/js/pages/profile.js"></script>
-    <script type="module">
-      import { setProfilePicture } from "./backend/public/assets/js/util/genprofilepic.js";
-      setProfilePicture(".nav-profile-pic", "John", "Doe", "#00f000");
-    </script>
+    <script type="module" src="backend/public/assets/js/util/genprofilepic.js"></script>
   </head>
   <body>
     <nav class="navbar">
@@ -78,32 +75,10 @@
 
       <!-- Right: User Profile Section -->
       <div class="profile-section">
-        <div class="profile-card" data-userId="">
-          <img src="/home/holasoymas/Pictures/img.png" alt="Profile Picture" class="profile-pic" />
-          <h3 class="profile-name">John Doe</h3>
-          <table class="profile-stats">
-            <tr>
-              <td>Blogs:</td>
-              <td>10</td>
-            </tr>
-            <tr>
-              <td>Likes:</td>
-              <td>200</td>
-            </tr>
-            <tr>
-              <td>Comments:</td>
-              <td>50</td>
-            </tr>
-            <tr>
-              <td>Followers:</td>
-              <td>300</td>
-            </tr>
-          </table>
-        </div>
-        <!-- demo template start  -->
         <template id="profile-card-template">
           <div class="profile-card" data-user-id="">
-            <img src="" alt="Profile Picture" class="profile-pic" />
+            <div class="profile-pic"></div>
+            <!-- <img src="" alt="Profile Picture" class="profile-pic" /> -->
             <h3 class="profile-name"></h3>
             <table class="profile-stats">
               <tr>
