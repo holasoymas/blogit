@@ -19,6 +19,20 @@ class SessionManager
     return isset($_SESSION[$key]) ? $_SESSION[$key] : null;
   }
 
+  public static function isAuthenticated()
+  {
+    return isset($_SESSION["uid"]);
+  }
+
+  public static function isAuthorized($requestUid)
+  {
+    if (!self::isAuthenticated()) {
+      return false; // Not authenticated
+    }
+    $sessionUid = self::getSession('uid');
+    return $sessionUid === $requestUid;
+  }
+
   public function destroySession()
   {
     session_unset();
