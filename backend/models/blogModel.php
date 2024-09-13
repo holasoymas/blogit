@@ -1,18 +1,23 @@
 <?php
-class Database {
-    private $host = 'localhost';
-    private $dbname = 'your_database';
-    private $username = 'your_username';
-    private $password = '';
-    private $pdo;
 
-    public function connect() {
-        try {
-            $this->pdo = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->username, $this->password);
-            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return $this->pdo;
-        } catch (PDOException $e) {
-            die("Connection failed: " . $e->getMessage());
-        }
-    }
+class BlogModel
+{
+  private $pdo;
+
+  public function __construct($db)
+  {
+    $this->pdo = $db->connect();
+  }
+
+  public function createBlog($title, $content, $uid)
+  {
+    $sql = "INSERT INTO blogs (title,content,uid) VALUES (:title, :content, :uid)";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute(['title' => $title, 'content' => $content, 'uid' => $uid]);
+
+    // for sending blog 
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result ? $result : null;
+  }
 }
