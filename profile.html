@@ -21,11 +21,6 @@
         </ul>
         <div class="profile-menu">
           <div class="nav-profile-pic"></div>
-          <!-- <img -->
-          <!--   src="/home/holasoymas/Pictures/img.png" -->
-          <!--   alt="Profile Picture" -->
-          <!--   class="nav-profile-pic" -->
-          <!-- /> -->
           <ul class="dropdown-menu">
             <li><a href="#">Home Page</a></li>
             <li><a href="#">Logout</a></li>
@@ -35,43 +30,16 @@
     </nav>
     <div class="container main-content">
       <!-- Left: Blog Section -->
-      <div class="blog-section">
-        <article class="blog-post">
-          <h2 class="post-title">Sample Blog Post Title 1</h2>
-          <p class="post-meta">Posted on August 26, 2024 by John Doe</p>
-          <!-- <img src="/home/holasoymas/Downloads/" alt="Blog Image" class="post-image" /> -->
-          <p class="post-content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet accumsan arcu.
-            Proin ac dui in felis pulvinar vulputate. Donec fermentum mauris eget augue elementum,
-            vel volutpat libero vehicula. Vestibulum ante ipsum primis in faucibus orci luctus et
-            ultrices posuere cubilia curae.
-          </p>
+      <div class="blog-section"></div>
+      <!-- template for blog -->
+      <template id="blog-template">
+        <article data-blog-id="" class="blog-post">
+          <h2 class="blog-title"></h2>
+          <p class="blog-meta">Posted on August 26, 2024 by John Doe</p>
+          <!-- <img src="/home/holasoymas/Downloads/" alt="Blog Image" class="blog-image" /> -->
+          <p class="blog-content"></p>
         </article>
-
-        <article class="blog-post">
-          <h2 class="post-title">Sample Blog Post Title 2</h2>
-          <p class="post-meta">Posted on August 25, 2024 by Jane Doe</p>
-          <!-- <img src="blog-image2.jpg" alt="Blog Image" class="post-image" /> -->
-          <p class="post-content">
-            Nullam vehicula justo ut velit gravida, et ultricies purus elementum. Suspendisse
-            potenti. Vivamus a auctor metus, ut feugiat lacus. Sed laoreet enim at augue
-            ullamcorper, ut volutpat justo hendrerit. Integer ac malesuada purus. Sed volutpat odio
-            vitae arcu ultricies, id ultricies nisi vestibulum.
-          </p>
-        </article>
-
-        <article class="blog-post">
-          <h2 class="post-title">Sample Blog Post Title 3</h2>
-          <p class="post-meta">Posted on August 24, 2024 by Alex Smith</p>
-          <!-- <img src="blog-image3.jpg" alt="Blog Image" class="post-image" /> -->
-          <p class="post-content">
-            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae;
-            Donec vehicula tristique purus, ac efficitur magna cursus id. Etiam at consectetur
-            felis, sit amet aliquet sem. Duis gravida felis sit amet enim ultricies, et convallis
-            orci laoreet. Phasellus commodo, dui vel bibendum sodales.
-          </p>
-        </article>
-      </div>
+      </template>
 
       <!-- Right: User Profile Section -->
       <div class="profile-section">
