@@ -1,4 +1,9 @@
 import { getBaseApiUrl } from "../config.js";
+import {
+  handleBadReqErrors,
+  handleUnauthenticatedError,
+  handleUnauthorizedError,
+} from "./errors.js";
 
 export async function fetchFromServer(endpoint, method, body = null) {
   try {
@@ -6,13 +11,26 @@ export async function fetchFromServer(endpoint, method, body = null) {
 
     if (!response.ok) {
       const errorData = await response.json();
-      throw new Error(errorData.message || "Registration failed");
+      console.log(errorData);
+      const resStatus = response.status;
+      switch (resStatus) {
+        case 400:
+          return handleBadReqErrors(errorData);
+        case 401:
+          return handleUnauthenticatedError(errorData);
+        case 403:
+          return handleUnauthorizedError(errorData);
+        case 404:
+          return handleUserNotFound(errorData);
+        default:
+          throw new Error(errorData.message || "Registration failed");
+      }
     }
-
     const json = await response.json();
+    console.log(json);
     return json;
   } catch (error) {
-    console.error("Fetch error:", error);
+    // console.error("Fetch error:", error);
     throw error;
   }
 }
