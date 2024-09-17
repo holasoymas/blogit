@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple Blog</title>
-    <link rel="stylesheet" href="backend/public/assets/css/style.css" />
     <link rel="stylesheet" href="backend/public/assets/css/nav.css" />
+    <link rel="stylesheet" href="backend/public/assets/css/style.css" />
     <script type="module" src="backend/public/assets/js/pages/profile.js"></script>
     <script type="module" src="backend/public/assets/js/util/genprofilepic.js"></script>
   </head>
@@ -20,7 +20,7 @@
           <li><a href="#">Privacy Policy</a></li>
         </ul>
         <div class="profile-menu">
-          <div class="nav-profile-pic"></div>
+          <div class="nav-profile-pic hidden"></div>
           <ul class="dropdown-menu">
             <li><a href="#">Home Page</a></li>
             <li><a href="#">Logout</a></li>
@@ -30,12 +30,13 @@
     </nav>
     <div class="container main-content">
       <!-- Left: Blog Section -->
+      <!-- blogs are inside this div -->
       <div class="blog-section"></div>
       <!-- template for blog -->
       <template id="blog-template">
         <article data-blog-id="" class="blog-post">
           <h2 class="blog-title"></h2>
-          <p class="blog-meta">Posted on August 26, 2024 by John Doe</p>
+          <p class="blog-meta"></p>
           <!-- <img src="/home/holasoymas/Downloads/" alt="Blog Image" class="blog-image" /> -->
           <p class="blog-content"></p>
         </article>
@@ -74,9 +75,7 @@
     <!-- closing of the entire container-->
 
     <footer class="footer">
-      <div class="container">
-        <p>&copy; 2024 My Blog. All rights reserved.</p>
-      </div>
+      <p>&copy; 2024 My Blog. All rights reserved.</p>
     </footer>
   </body>
 </html>
