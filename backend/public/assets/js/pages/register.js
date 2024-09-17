@@ -5,7 +5,7 @@ function onHandleRegister(e) {
   e.preventDefault();
   const registerDetails = getRegisterDetails();
   User.registerUser(registerDetails);
-  console.log(registerDetails);
+  // console.log(registerDetails);
 }
 
 function getRegisterDetails() {
