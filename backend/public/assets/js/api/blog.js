@@ -1,5 +1,8 @@
 import { getBaseDomainUrl } from "../config.js";
+import { renderFullBlogItem } from "../renderer/renderBlog.js";
+import { renderComments } from "../renderer/renderComments.js";
 import { fetchFromServer } from "../util/fetcher.js";
+import { getCommentsByBlog } from "./comment.js";
 
 export async function addBlog(blogData) {
   fetchFromServer("blogRoute.php", "POST", blogData)
@@ -25,10 +28,18 @@ export async function getAddBlogPage() {
     .catch((err) => alert(err.message));
 }
 
-// export async function getBlogsByUser(uid) {
-//   fetchFromServer("blogRoute.php", "GET")
-//     .then((res) => {
-//       console.log(res);
-//     })
-//     .catch((err) => err.message);
-// }
+export async function fetchBlogPage() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const pid = params.get("pid");
+    const res = await fetchFromServer(`blogRoute.php?pid=${encodeURIComponent(pid)}`, "GET");
+    const comments = await getCommentsByBlog(pid);
+    console.log(comments);
+    console.log(res);
+    renderFullBlogItem(".blog-content", res);
+    renderComments(".comments", comments);
+    // renderFullBlogItem("article", res);
+  } catch (err) {
+    alert(err);
+  }
+}

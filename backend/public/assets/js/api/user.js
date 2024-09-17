@@ -6,34 +6,36 @@ import { setProfilePicture } from "../util/genprofilepic.js";
 import { renderBlogs } from "../renderer/renderBlog.js";
 
 export async function registerUser(userData) {
-  fetchFromServer("userRoute.php", "POST", userData)
-    .then((res) => {
-      console.log(res);
-      if (res.status === 400) {
-        renderValidationErrors("#register-form", res.errors);
-      }
-      if (res.userId) {
-        window.location.href = `${getBaseDomainUrl()}/profile.html?uid=${encodeURIComponent(
-          res.userId,
-        )}`;
-      }
-    })
-    .catch((err) => alert(err.message));
+  try {
+    const res = await fetchFromServer("userRoute.php", "POST", userData);
+    console.log(res);
+    if (res.status === 400) {
+      renderValidationErrors("#register-form", res.errors);
+    }
+    if (res.userId) {
+      window.location.href = `${getBaseDomainUrl()}/profile.html?uid=${encodeURIComponent(
+        res.userId,
+      )}`;
+    }
+  } catch (err) {
+    alert(err.message);
+  }
 }
 
 export async function loginUser(userData) {
-  fetchFromServer("login.php", "POST", userData)
-    .then((res) => {
-      if (res.status === 400) {
-        alert(res.errors);
-      }
-      if (res.userId) {
-        window.location.href = `${getBaseDomainUrl()}/profile.html?uid=${encodeURIComponent(
-          res.userId,
-        )}`;
-      }
-    })
-    .catch((err) => console.log(err));
+  try {
+    const res = await fetchFromServer("login.php", "POST", userData);
+    if (res.status === 400) {
+      alert(res.errors);
+    }
+    if (res.userId) {
+      window.location.href = `${getBaseDomainUrl()}/profile.html?uid=${encodeURIComponent(
+        res.userId,
+      )}`;
+    }
+  } catch (err) {
+    console.log(err);
+  }
 }
 
 export async function getUserById(uid) {
@@ -72,7 +74,6 @@ export async function fetchProfile() {
     } else {
       $navProfilePic.classList.add("hidden");
     }
-
     renderUserProfile(".profile-section", user);
     renderBlogs(".blog-section", blogs);
   } catch (err) {
