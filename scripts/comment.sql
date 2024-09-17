@@ -1,9 +1,9 @@
 -- Create comments table
 CREATE TABLE IF NOT EXISTS comments (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    blog_id INT NOT NULL,
-    user_id INT NOT NULL,
-    comment TEXT NOT NULL,
+    cid char(36)   PRIMARY KEY DEFAULT (UUID()) ,
+    blog_id char(36) NOT NULL,
+    user_id char(36) NOT NULL,
+    comment varchar(100) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (blog_id) REFERENCES blogs(id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
