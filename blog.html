@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Blog</title>
+    <link rel="stylesheet" href="backend/public/assets/css/nav.css" />
+    <link rel="stylesheet" href="backend/public/assets/css/style.css" />
+    <link rel="stylesheet" href="backend/public/assets/css/blog.css" />
+    <script type="module" src="backend/public/assets/js/pages/innerBlog.js"></script>
+    <script type="module" src="backend/public/assets/js/pages/comment.js"></script>
+    <script type="module" src="backend/public/assets/js/util/genprofilepic.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-left">
+        <div class="logo"><a href="#">BLOGIT</a></div>
+      </div>
+      <div class="navbar-right">
+        <ul class="nav-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+        <div class="profile-menu">
+          <div class="nav-profile-pic hidden"></div>
+          <ul class="dropdown-menu">
+            <li><a href="#">Home Page</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <section class="blog-content">
+        <article>
+          <h1>Blog Title</h1>
+          <p class="blog-meta">Published on August 26, 2024</p>
+          <!-- <img src="blog-image.jpg" alt="Blog Image" class="blog-image" /> -->
+          <p class="blog">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+          <!-- Add more paragraphs or other blog content here -->
+          <!-- Author Section -->
+          <div class="author-section">
+            <!-- <img src="author-pic.jpg" alt="Author" class="author-pic" /> -->
+            <div class="author-info">
+              <p>Written by <strong>Username</strong></p>
+              <p>Email: user@example.com</p>
+            </div>
+          </div>
+        </article>
+      </section>
+      <!-- Comments Section -->
+      <section class="comments-section">
+        <div class="add-comment">
+          <input type="text" placeholder="Add a comment..." name="comment" id="comment" />
+          <button id="handle-add-blog">Submit</button>
+        </div>
+        <h3>Comments</h3>
+        <div class="comments">
+          <!-- dynamically render comments here  -->
+        </div>
+      </section>
+      <!-- </section> -->
+      <template id="full-blog-template">
+        <article data-blog-id="">
+          <h1></h1>
+          <p class="blog-meta"></p>
+          <p class="blog"></p>
+          <div class="author-section" data-user-id="">
+            <span class="author-pic"></span>
+            <div class="author-info">
+              <p>Written by <strong></strong></p>
+              <p class="author-email"></p>
+            </div>
+          </div>
+        </article>
+      </template>
+    </main>
+    <footer class="footer">
+      <p>&copy; 2024 MyBlog. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
