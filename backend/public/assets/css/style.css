@@ -18,8 +18,13 @@ body {
   color: #333;
 }
 
+.hidden {
+  display: none;
+}
+
 /* Container */
 .container {
+  /* flex: 1; */
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
@@ -75,25 +80,34 @@ body {
   border-radius: 5px;
 }
 
-.post-title {
+.blog-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.blog-link:hover {
+  text-decoration: underline;
+}
+
+.blog-title {
   font-size: 28px;
   margin-bottom: 10px;
 }
 
-.post-meta {
+.blog-meta {
   color: #888;
   font-size: 14px;
   margin-bottom: 20px;
 }
 
-.post-image {
+.blog-image {
   max-width: 100%;
   height: auto;
   margin-bottom: 20px;
   border-radius: 5px;
 }
 
-.post-content {
+.blog-content {
   margin-bottom: 15px;
 }
 
@@ -116,8 +130,14 @@ body {
   width: 100px;
   height: 100px;
   border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  color: #fff;
+  text-align: center;
+  font-weight: bolder;
+  margin: 0 auto;
 }
 
 .profile-name {
@@ -129,20 +149,26 @@ body {
   width: 100%;
   text-align: left;
   font-size: 16px;
+  /* border: 1px solid black; */
 }
 
 .profile-stats td {
-  border-bottom: 1px solid black;
   padding: 5px 0;
 }
-
+tr:nth-child(odd) {
+  background-color: #dddddd;
+}
 /* Footer */
+
 .footer {
+  position: fixed;
+  /* left: 0; */
+  padding: 10px;
+  bottom: 0;
+  width: 100%;
   background-color: #333;
   color: #fff;
   text-align: center;
-  padding: 10px 0;
-  margin-top: 40px;
 }
 
 /* Responsive */

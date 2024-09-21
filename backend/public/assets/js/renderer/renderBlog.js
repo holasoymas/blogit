@@ -1,3 +1,4 @@
+import { getBaseDomainUrl } from "../config.js";
 import { formatDate } from "../util/dateFormatter.js";
 import { setProfilePicture } from "../util/genprofilepic.js";
 
@@ -16,9 +17,13 @@ function renderBlogItem(blog) {
   const $template = document
     .querySelector("#blog-template")
     .content.firstElementChild.cloneNode(true);
-
   $template.dataset.blogId = blog.pid;
-  $template.querySelector(".blog-title").innerText = blog.title;
+  // $template.querySelector(".blog-title").innerText = blog.title;
+
+  const $blogLink = $template.querySelector(".blog-link");
+  $blogLink.href = `${getBaseDomainUrl()}/blog.html?pid=${blog.pid}`; // Assuming you have a route for blog posts like /blog/{id}
+  $blogLink.querySelector(".blog-title").innerText = blog.title;
+
   $template.querySelector(".blog-meta").innerText = `Posted on ${formatDate(blog.created_at)}`;
   $template.querySelector(".blog-content").innerText = blog.content;
 
