@@ -4,6 +4,7 @@ require_once '../models/blogModel.php';
 require_once '../config/db.php';
 require_once '../services/SessionManager.php';
 require_once '../services/generateProfile.php';
+require_once '../services/ImageUplaod.php';
 
 class BlogController
 {
@@ -15,15 +16,20 @@ class BlogController
     $this->blogModel = new BlogModel($db);
   }
 
-  public function createBlog($data)
+  public function createBlog()
   {
     $errors = [];
 
-    SessionManager::startSession();
+    if (!SessionManager::isAuthenticated()) {
+      http_response_code(401);
+      echo  json_encode(["error" => "Please login first"]);
+      exit;
+    }
+
     $uid = SessionManager::getSession("uid");
 
-    $title = $data["title"];
-    $content = $data["content"];
+    $title = isset($_POST["title"]) ? $_POST["title"] : '';
+    $content = isset($_POST["content"]) ? $_POST["content"] : '';
 
     if (strlen($title) <= 10 || strlen($title) >= 255) {
       $errors["title"] = "Title must be of length between 10-255";
@@ -35,20 +41,29 @@ class BlogController
     if (!empty($errors)) {
       http_response_code(400);
       echo json_encode([
-        "status" => 400,
         "errors" => $errors
       ]);
-      return;
+      exit;
     }
 
-    if (!SessionManager::isAuthenticated()) {
-      http_response_code(401);
-      echo  json_encode(["error" => "Please login first"]);
-    }
+    $blogId = $this->blogModel->createBlog($title, $content, $uid);
 
-    $blog = $this->blogModel->createBlog($title, $content, $uid);
+    if (!$blogId) {
+      echo json_encode(["error" => $blogId]);
+      exit;
+    }
 
     http_response_code(201);
-    echo json_encode(["message" => "Blog created successfully", "blog" => $blog]);
+    echo json_encode(["message" => "Blog created successfully", "blog" => $blogId]);
+    exit;
+  }
+
+  function getBlogById($pid)
+  {
+    $uid = SessionManager::getSession("uid");
+    $blogdata = $this->blogModel->getBlogById($pid);
+    http_response_code(200);
+    echo json_encode(["loggedInUser" => $uid, "blog" => $blogdata]);
+    exit;
   }
 }
