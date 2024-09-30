@@ -1,9 +1,9 @@
 -- Create likes table
 CREATE TABLE IF NOT EXISTS likes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    blog_id INT NOT NULL,
-    user_id INT NOT NULL,
+    lid char(36) PRIMARY KEY DEFAULT (UUID()),
+    bid char(36) NOT NULL,
+    uid char(36) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (blog_id) REFERENCES blogs(id) ON DELETE CASCADE,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    FOREIGN KEY (bid) REFERENCES blogs(pid) ON DELETE CASCADE,
+    FOREIGN KEY (uid) REFERENCES users(id) ON DELETE CASCADE
 );
