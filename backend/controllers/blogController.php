@@ -60,8 +60,14 @@ class BlogController
 
   function getBlogById($pid)
   {
+    // note this is needed to know who is the owner
     $uid = SessionManager::getSession("uid");
     $blogdata = $this->blogModel->getBlogById($pid);
+    if (!$blogdata) {
+      http_response_code(404);
+      echo json_encode(["error" => "Blog not found"]);
+      exit;
+    }
     http_response_code(200);
     echo json_encode(["loggedInUser" => $uid, "blog" => $blogdata]);
     exit;
