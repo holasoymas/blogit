@@ -6,16 +6,17 @@ main {
   align-items: center; /* Centers both sections horizontally */
 }
 
-.blog-content {
+.blog-content-area {
   width: 100%;
   max-width: 800px;
   padding: 20px;
   background-color: #fff;
   border-radius: 8px 8px 0 0; /* Rounded corners only at the top */
+  margin-top: 0;
   margin-bottom: 0; /* Removes the margin between blog and comments */
 }
 
-.blog-content h1 {
+.blog-content-area h1 {
   font-size: 28px;
   margin-bottom: 10px;
 }
@@ -31,10 +32,30 @@ main {
   margin-bottom: 20px;
 }
 
+.inner-like-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.heart {
+  cursor: pointer;
+  transition: fill 0.3s ease;
+}
+
+.heart.liked .heart-path {
+  fill: #ff3366;
+}
+
+.heart .heart-path {
+  fill: none; /* Default state with no fill */
+}
+
 .author-section {
   display: flex;
   align-items: center;
-  margin-top: 30px;
+  /* margin-top: 30px; */
   padding: 20px 0;
   border-top: 1px solid #ddd;
 }
@@ -69,6 +90,7 @@ main {
   border-radius: 0 0 8px 8px; /* Rounded corners only at the bottom */
   border-top: 1px solid #ddd; /* Adds a subtle separation between sections */
   margin-top: 0; /* Ensures there's no extra gap */
+  margin-bottom: 20px;
 }
 
 .comments-section h3 {
@@ -80,6 +102,15 @@ main {
   margin-bottom: 10px;
   background-color: #f9f9f9;
   border-radius: 8px;
+}
+
+.comment a {
+  color: black;
+  text-decoration: none;
+}
+
+.comment a:hover {
+  text-decoration: underline;
 }
 
 .add-comment {
