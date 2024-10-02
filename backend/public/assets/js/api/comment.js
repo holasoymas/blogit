@@ -11,6 +11,7 @@ export async function addComment(commentData) {
       return;
     }
     console.log(res);
+    document.querySelector("#comment").value = "";
     renderComments(".comments", res);
   } catch (err) {
     console.log(err);
@@ -20,7 +21,7 @@ export async function addComment(commentData) {
 export async function getCommentsByBlog(pid) {
   try {
     const res = await fetchFromServer(`commentRoute.php?pid=${encodeURIComponent(pid)}`, "GET");
-    console.log(res);
+    // console.log(res);
     return res;
   } catch (err) {
     console.log(err);
