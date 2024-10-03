@@ -14,3 +14,13 @@ export function formatDate(date) {
   const formattedDate = dateObj.toLocaleString("en-US", options);
   return formattedDate;
 }
+
+export function toLocaleStr(date) {
+  const d = new Date(date);
+  const formattedDate = d.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+  return formattedDate;
+}
