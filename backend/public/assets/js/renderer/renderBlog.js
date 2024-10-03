@@ -19,19 +19,21 @@ function renderBlogItem(blog) {
   const $template = document
     .querySelector("#blog-template")
     .content.firstElementChild.cloneNode(true);
-  $template.dataset.blogId = blog.pid;
+  $template.dataset.blogId = blog.blog_id;
   // $template.querySelector(".blog-title").innerText = blog.title;
 
   const $blogLink = $template.querySelector(".blog-link");
-  $blogLink.href = `${getBaseDomainUrl()}/blog.html?pid=${blog.pid}`; // Assuming you have a route for blog posts like /blog/{id}
-  $blogLink.querySelector(".blog-title").innerText = blog.title;
+  $blogLink.href = `${getBaseDomainUrl()}/blog.html?pid=${blog.blog_id}`; // Assuming you have a route for blog posts like /blog/{id}
+  $blogLink.querySelector(".blog-title").innerText = blog.blog_title;
 
-  $template.querySelector(".blog-meta").innerText = `Posted on ${formatDate(blog.created_at)}`;
-  $template.querySelector(".blog-content").innerText = blog.content;
+  $template.querySelector(".blog-meta").innerText = `Posted on ${formatDate(blog.blog_created_at)}`;
+  $template.querySelector(".blog-content").innerText = blog.blog_content;
 
   $template.querySelector(".read-more-link").href = `${getBaseDomainUrl()}/blog.html?pid=${
-    blog.pid
+    blog.blog_id
   }`;
+  $template.querySelector(".post-like span").innerText = blog.blog_likes;
+  $template.querySelector(".post-comment span").innerText = `${blog.blog_comments} Comments`;
 
   return $template;
 }
