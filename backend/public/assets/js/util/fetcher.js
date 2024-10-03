@@ -3,6 +3,7 @@ import {
   handleBadReqErrors,
   handleUnauthenticatedError,
   handleUnauthorizedError,
+  handleUserNotFound,
 } from "./errors.js";
 
 export async function fetchFromServer(endpoint, method, body = null) {
