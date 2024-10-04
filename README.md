@@ -1,14 +1,13 @@
 # Blogit (Mini blogging platform created in php and javascript)
 
-This is a semester project of TU(Trivhuvan University) Project I of 4th semester.
-
-<!-- ![my logo](image_url) -->
+This is a semester project of TU(Trivhuvan University) **Project I** of _4th semester_.
 
 ## Entities
 
 - Database
-  `CREATE DATABASE IF NOT EXISTS blogit;`
-
+  ```
+  CREATE DATABASE IF NOT EXISTS blogit;
+  ```
 - Users
 
   ```
@@ -42,17 +41,18 @@ This is a semester project of TU(Trivhuvan University) Project I of 4th semester
 
   ```
   CREATE TABLE IF NOT EXISTS comments (
-    cid char(36)   PRIMARY KEY DEFAULT (UUID()) ,
+    cid char(36) PRIMARY KEY DEFAULT (UUID()) ,
     blog_id char(36) NOT NULL,
     user_id char(36) NOT NULL,
     comment varchar(100) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (blog_id) REFERENCES blogs(id) ON DELETE CASCADE,
+    FOREIGN KEY (blog_id) REFERENCES blogs(pid) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
   );
   ```
 
 - Likes
+
   ```
   CREATE TABLE IF NOT EXISTS likes (
     lid char(36) PRIMARY KEY DEFAULT (UUID()),
@@ -63,3 +63,22 @@ This is a semester project of TU(Trivhuvan University) Project I of 4th semester
     FOREIGN KEY (uid) REFERENCES users(id) ON DELETE CASCADE
   );
   ```
+
+- Request For Block
+
+```
+   CREATE TABLE IF NOT EXISTS blocks (
+    block_id char(36) PRIMARY KEY DEFAULT (uuid()),
+    block_by char(36) NOT NULL,
+    block_to char(36) NOT NULL,
+    message VARCHAR(200) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (block_by) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (block_to) REFERENCES users(id) ON DELETE CASCADE,
+   );
+```
+
+## Pages
+
+- Profile Page
+  ![profile page pic](./backend/public/assets/images/profile_page.png)
