@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS blocks (
+ block_id char(36) PRIMARY KEY DEFAULT (uuid()),
+ block_by char(36) NOT NULL,
+ block_to char(36) NOT NULL,
+ message VARCHAR(200) NOT NULL,
+ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+FOREIGN KEY (block_by) REFERENCES users(id) ON DELETE CASCADE, 
+FOREIGN KEY (block_to) REFERENCES users(id) ON DELETE CASCADE, 
+);
