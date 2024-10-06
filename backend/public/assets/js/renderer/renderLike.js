@@ -12,10 +12,6 @@ export async function renderCurrLikeStat($selector, postId) {
     } else {
       $heart.classList.remove("liked");
     }
-
-    // $selector
-    //   .querySelector(".heart-path")
-    //   .setAttribute("fill", likeData.hasLiked ? "#ff3366" : "none");
   }
 }
 
@@ -29,8 +25,4 @@ export async function updateCurrentLikeStat($selector, likeData) {
   } else {
     $heart.classList.remove("liked");
   }
-
-  // $likePart
-  // .querySelector(".heart-path")
-  // .setAttribute("fill", likeData.hasLiked ? "#ff3366" : "none");
 }
