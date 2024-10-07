@@ -78,6 +78,37 @@ This is a semester project of TU(Trivhuvan University) **Project I** of _4th sem
    );
 ```
 
+## Admin Part
+
+Admin part is in _blogit/backend/public/admin_ where it is a protected route
+We have used built in apache feature to make it protected.
+
+To do so install _(in linux)_
+
+`sudo apt-get apache2-utils`
+
+create a file .htpasswd where you can store username and password to that protected route
+**_NOTE_** : \_For security reason place it outside of where borowser can access typically outside htdocs folder
+
+```
+sudo htpasswd -c /opt/lampp/.htpasswd username
+# You will be prompted to type a password
+
+```
+
+create a _.htaccess_ file in a protected folder here in our case in _*/blogit/backend/public/admin*_
+And paste the below code
+
+```
+AuthType Basic # type of authentication
+AuthName "Admin Area" # name displayed on login board
+AuthUserFile /opt/lampp/.htpasswd # path where password is stored
+Require valid-user # only valid-user can go further
+```
+
+Now when you go to the route you will be prompted to give username and password
+Enter earlier username and password stroed in .htpasswd and you are good to go
+
 ## Pages
 
 - Profile Page
