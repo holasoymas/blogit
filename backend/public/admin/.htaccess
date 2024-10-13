@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Admin Area"
+AuthUserFile /opt/lampp/.htpasswd
+Require valid-user
