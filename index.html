@@ -1,0 +1,119 @@
+<!-- put this insdie the title tag -->
+<!-- Alice&#013;Bob&#013;Charlie&#013;David&#013;Eve -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="backend/public/assets/css/nav.css" />
+    <link rel="stylesheet" href="backend/public/assets/css/style.css" />
+    <link rel="stylesheet" href="backend/public/assets/css/index.css" />
+    <script type="module" src="backend/public/assets/js/pages/index.js"></script>
+    <script type="module" src="backend/public/assets/js/util/genprofilepic.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-left">
+        <div class="logo"><a href="#">BLOGIT</a></div>
+      </div>
+      <div class="navbar-right">
+        <ul class="nav-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li class="nav-login hidden">
+            <a href="http://localhost/blogit/login.html">Login/Reg</a>
+          </li>
+        </ul>
+        <div class="profile-menu">
+          <div class="nav-profile-pic hidden"></div>
+          <ul class="dropdown-menu">
+            <li><a href="#">Home Page</a></li>
+            <li><a href="#" id="logout">Logout</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- Blog section (left) -->
+      <div class="blog-section">
+        <div class="blog-post">
+          <h2>Blog Title 1</h2>
+          <p class="author">by ABX on August 26, 2024</p>
+          <!-- <img src="blog-image1.jpg" alt="Blog Image 1" /> -->
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+        <div class="blog-post">
+          <h2>Blog Title 2</h2>
+          <p class="author">by CDY on August 25, 2024</p>
+          <!-- <img src="blog-image2.jpg" alt="Blog Image 2" /> -->
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+          <a href="#" class="read-more">Read More</a>
+        </div>
+      </div>
+      <template id="blog-template">
+        <article data-blog-id="" class="blog-post">
+          <a href="" class="blog-link">
+            <h2 class="blog-title"></h2>
+          </a>
+          <p class="blog-meta"></p>
+          <!-- <img src="/home/holasoymas/Downloads/" alt="Blog Image" class="blog-image" /> -->
+          <p class="blog-content"></p>
+          <span><a href="" class="read-more-link">Read More</a></span>
+          <div class="post-like-comment">
+            <div class="post-like">
+              <svg
+                class="heart"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+              >
+                <path
+                  class="heart-path"
+                  d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                  stroke="black"
+                  fill="none"
+                />
+              </svg>
+              <span>0</span>
+            </div>
+            <div class="post-comment">
+              <button>💬</button>
+              <span>0 Comments</span>
+            </div>
+          </div>
+        </article>
+      </template>
+
+      <!-- Right Sidebar for Popular Posts and Popular Users -->
+      <div class="right-sidebar">
+        <div class="sidebar-section">
+          <h3>Popular Posts</h3>
+          <ul>
+            <li><a href="#">Popular Post 1</a></li>
+            <li><a href="#">Popular Post 2</a></li>
+            <li><a href="#">Popular Post 3</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <h3>Popular Users</h3>
+          <ul>
+            <li><a href="#">User ABX</a></li>
+            <li><a href="#">User CDY</a></li>
+            <li><a href="#">User EFG</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2024 My Blog. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
