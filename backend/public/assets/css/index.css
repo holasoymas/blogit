@@ -1,0 +1,134 @@
+/* General styling */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container for the main content */
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Blog section (left side) */
+.blog-section {
+  width: 70%;
+  overflow-y: auto;
+  max-height: 80vh;
+  padding-right: 20px;
+}
+
+/* Individual blog post styling */
+
+.blog-post {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.blog-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.blog-link:hover {
+  text-decoration: underline;
+}
+
+.blog-title {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.blog-meta {
+  color: #888;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.blog-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+
+.blog-content {
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  /* margin-bottom: 15px; */
+}
+
+.post-like-comment {
+  display: flex;
+  align-items: center;
+  /* row-gap: 5px; */
+  gap: 40px;
+  /* justify-content: space-between; */
+}
+
+.post-like {
+  display: flex;
+  align-items: center; /* Ensures each section's content is centered vertically */
+  gap: 5px;
+}
+.post-like-comment button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+/* Right side section for popular posts and users */
+.right-sidebar {
+  width: 25%;
+}
+
+.sidebar-section {
+  background-color: white;
+  padding: 15px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-section h3 {
+  margin-top: 0;
+}
+
+.sidebar-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar-section ul li {
+  margin-bottom: 10px;
+}
+
+.sidebar-section ul li a {
+  color: #3498db;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Footer styling */
+.footer {
+  position: fixed;
+  padding: 5px;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+}
