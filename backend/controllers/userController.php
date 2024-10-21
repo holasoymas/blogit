@@ -1,5 +1,4 @@
 <?php
-// controllers/userController.php
 require_once '../models/userModel.php';
 require_once '../config/db.php';
 require_once '../services/SessionManager.php';
@@ -73,14 +72,10 @@ class UserController
   {
     // Get the user data from the model
     $userData = $this->userModel->getUserById($uid);
-    // echo json_encode(["uid" => $uid]);
-    // Check if user data is not null
     if ($userData) {
-      // Return user data in JSON format
       http_response_code(200);
       echo json_encode($userData);
     } else {
-      // Handle the case where no user data is found
       http_response_code(404);
       echo json_encode(["error" => "User not found"]);
     }
@@ -101,5 +96,16 @@ class UserController
       echo json_encode(["errors" => "Invalid Crediantials"]);
     }
   }
-  // Other user-related operations...
+
+  public function deleteUser($uid)
+  {
+    $userData = $this->userModel->deleteUser($uid);
+    if (isset($userData['message'])) {
+      http_response_code(200);
+      echo json_encode($userData);
+    } else {
+      http_response_code(404);
+      echo json_encode(["error" => "User not found"]);
+    }
+  }
 }
