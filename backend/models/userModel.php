@@ -24,20 +24,14 @@ class UserModel
     return $uuid;
   }
 
-  public function getUserProfileById($uid)
+  public function getUserById($uid)
   {
     try {
       $sql = "SELECT id, fname,lname, dob, email,profile_pic FROM users WHERE id = :uid";
       $stmt = $this->pdo->prepare($sql);
       $stmt->execute(['uid' => $uid]);
       $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-      $sql = "SELECT pid, uid, title, content FROM blogs WHERE uid = :uid";
-      $stmt = $this->pdo->prepare($sql);
-      $stmt->execute(["uid" => $uid]);
-      $blogs = $stmt->fetchAll(PDO::FETCH_ASSOC);
-      $result = ["user" => $user, "blogs" => $blogs];
-      return $result;
+      return $user;
     } catch (PDOException $e) {
       // Log the error or output for debugging
       error_log("Database error: " . $e->getMessage());
@@ -52,5 +46,18 @@ class UserModel
     $stmt->execute(['email' => $email, 'password' => $password]);
     $uuid = $stmt->fetchColumn();
     return $uuid;
+  }
+
+  public function deleteUser($uid)
+  {
+    $sql = "DELETE FROM users where id = :uid";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute(["uid" => $uid]);
+
+    if ($stmt->rowCount() > 0) {
+      return ['message' => 'User deleted successfully'];
+    } else {
+      return ['error' => 'User not found or deletion failed'];
+    }
   }
 }
