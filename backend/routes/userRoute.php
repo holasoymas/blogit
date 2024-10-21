@@ -22,6 +22,16 @@ if ($requestMethod == 'GET') {
   if ($uid) {
     $userController->getUserById($uid);
   } else {
+    http_response_code(404);
     echo json_encode(["error" => "User ID (uid) is missing"]);
+  }
+}
+
+if ($requestMethod == "DELETE") {
+  if ($uid) {
+    $userController->deleteUser($uid);
+  } else {
+    http_response_code(404);
+    echo json_encode(["error" => "User id is missing"]);
   }
 }
