@@ -24,34 +24,28 @@ class UserController
     $email = $data['email'];
     $password = $data['password'];
 
-    // Validation can be added here...
     if (empty($data['fname'])) {
       $errors['fname'] = "Firstname is required";
     }
 
-    // Validate Lastname
     if (empty($data['lname'])) {
       $errors['lname'] = "Lastname is required";
     }
 
-    // Validate Date of Birth
     if (empty($data['dob'])) {
       $errors['dob'] = "Date of birth is required";
     }
 
-    // Validate Email
     if (empty($data['email']) || !filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
       $errors['email'] = "A valid email is required";
     }
 
-    // Validate Password
     if (empty($data['password'])) {
       $errors['password'] = "Password is required";
     } elseif (strlen($data['password']) < 6) {
       $errors['password'] = "Password must be at least 6 characters long";
     }
 
-    // If there are validation errors, return them as a JSON response
     if (!empty($errors)) {
       http_response_code(400);
       echo json_encode([
@@ -70,7 +64,6 @@ class UserController
 
   public function getUserById($uid)
   {
-    // Get the user data from the model
     $userData = $this->userModel->getUserById($uid);
     if ($userData) {
       http_response_code(200);
@@ -83,8 +76,28 @@ class UserController
 
   public function loginUser($data)
   {
+    $errors = [];
     $email = $data["email"];
     $password = $data["password"];
+
+    if (empty($data['email']) || !filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+      $errors['email'] = "A valid email is required";
+    }
+
+    if (empty($data['password'])) {
+      $errors['password'] = "Password is required";
+    } elseif (strlen($data['password']) < 6) {
+      $errors['password'] = "Password must be at least 6 characters long";
+    }
+
+    if (!empty($errors)) {
+      http_response_code(400);
+      echo json_encode([
+        "status" => "error",
+        "errors" => $errors
+      ]);
+      return;
+    }
 
     $userId = $this->userModel->loginUser($email, $password);
     if ($userId) {
@@ -92,8 +105,8 @@ class UserController
       http_response_code(200);
       echo json_encode(["userId" => $userId]);
     } else {
-      http_response_code(400);
-      echo json_encode(["errors" => "Invalid Crediantials"]);
+      http_response_code(401);
+      echo json_encode(["error" => "Invalid Crediantials"]);
     }
   }
 
