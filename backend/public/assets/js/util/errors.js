@@ -13,3 +13,7 @@ export function handleUnauthorizedError() {
 export function handleUserNotFound(errorData) {
   return { status: 404, error: errorData.error };
 }
+
+export function handleDataConflict(errorData) {
+  return { status: 409, error: errorData.error };
+}
