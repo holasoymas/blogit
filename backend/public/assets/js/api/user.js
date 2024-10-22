@@ -22,9 +22,10 @@ export async function registerUser(userData) {
 export async function loginUser(userData) {
   try {
     const res = await fetchFromServer("login.php", "POST", userData);
-    if (res.status === 400) {
-      alert(res.errors);
+    if (res.status === 401) {
+      alert(res.error);
     }
+    if (res.status === 400) renderValidationErrors("#login-container", res.errors);
     if (res.userId) {
       window.location.href = `${getBaseDomainUrl()}/profile.html?uid=${encodeURIComponent(
         res.userId,
@@ -56,5 +57,17 @@ export async function logout(e) {
     if (res.status === 400) alert(res.errors);
   } catch (err) {
     alert("Error occured", err.message);
+  }
+}
+
+export async function deleteUser(uid) {
+  const conf = confirm("Are you sure you want to delete this user ?");
+  if (!conf) return;
+  try {
+    const res = await fetchFromServer(`userRoute.php?uid=${encodeURIComponent(uid)}`, "DELETE");
+    console.log(res);
+    alert(res.message);
+  } catch (err) {
+    console.error(err);
   }
 }
