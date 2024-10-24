@@ -11,14 +11,14 @@ export function renderAdminUsers(users) {
   }
   users.forEach((user) => {
     const userRow = `
-            <tr>
-                <td>${user.id}</td>
-                <td>${user.fname} ${user.lname}</td>
-                <td>${user.email}</td>
-                <td>${user.block_req_nums}</td>
-                <td><button class="delete-btn" onclick="deleteUser(${user.id})">Delete</button></td>
-            </tr>
-        `;
+        <tr>
+        <td>${user.id}</td>
+        <td>${user.fname} ${user.lname}</td>
+        <td>${user.email}</td>
+        <td>${user.block_req_nums}</td>
+        <td><button class="delete-btn" data-id="${user.id}">Delete</button></td>
+      </tr>    
+     `;
     $usersTableBody.insertAdjacentHTML("beforeend", userRow);
   });
 }
