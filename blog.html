@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="backend/public/assets/css/nav.css" />
     <link rel="stylesheet" href="backend/public/assets/css/style.css" />
     <link rel="stylesheet" href="backend/public/assets/css/blog.css" />
+    <!-- <script type="module" src="backend/"></script> -->
     <script type="module" src="backend/public/assets/js/pages/innerBlog.js"></script>
     <script type="module" src="backend/public/assets/js/pages/comment.js"></script>
     <script type="module" src="backend/public/assets/js/util/genprofilepic.js"></script>
@@ -14,39 +15,61 @@
   <body>
     <nav class="navbar">
       <div class="navbar-left">
-        <div class="logo"><a href="#">BLOGIT</a></div>
+        <div class="logo"><a href="http://localhost/blogit/index.html">BLOGIT</a></div>
       </div>
       <div class="navbar-right">
         <ul class="nav-links">
           <li><a href="#">About Us</a></li>
           <li><a href="#">Privacy Policy</a></li>
+          <li class="nav-login hidden">
+            <a href="http://localhost/blogit/login.html">Login/Reg</a>
+          </li>
         </ul>
         <div class="profile-menu">
           <div class="nav-profile-pic hidden"></div>
           <ul class="dropdown-menu">
-            <li><a href="#">Home Page</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="">Home Page</a></li>
+            <li><a href="#" id="logout">Logout</a></li>
           </ul>
         </div>
       </div>
     </nav>
     <main>
-      <section class="blog-content">
-        <article>
-          <h1>Blog Title</h1>
-          <p class="blog-meta">Published on August 26, 2024</p>
-          <!-- <img src="blog-image.jpg" alt="Blog Image" class="blog-image" /> -->
-          <p class="blog">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-          <!-- Add more paragraphs or other blog content here -->
-          <!-- Author Section -->
-          <div class="author-section">
-            <!-- <img src="author-pic.jpg" alt="Author" class="author-pic" /> -->
-            <div class="author-info">
-              <p>Written by <strong>Username</strong></p>
-              <p>Email: user@example.com</p>
+      <section class="blog-content-area">
+        <!-- dynamically render the blog here  -->
+        <template id="full-blog-template">
+          <article data-blog-id="">
+            <h1></h1>
+            <p class="blog-meta"></p>
+            <p class="blog"></p>
+            <div class="inner-like-btn">
+              <svg
+                class="heart"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+              >
+                <path
+                  class="heart-path"
+                  d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                  stroke="black"
+                  fill="none"
+                />
+              </svg>
+              <span class="like-count">23</span>
             </div>
-          </div>
-        </article>
+
+            <div class="author-section" data-user-id="">
+              <span class="author-pic"></span>
+              <div class="author-info">
+                <p>Written by <strong></strong></p>
+                <p class="author-email"></p>
+              </div>
+            </div>
+          </article>
+        </template>
       </section>
       <!-- Comments Section -->
       <section class="comments-section">
@@ -59,21 +82,6 @@
           <!-- dynamically render comments here  -->
         </div>
       </section>
-      <!-- </section> -->
-      <template id="full-blog-template">
-        <article data-blog-id="">
-          <h1></h1>
-          <p class="blog-meta"></p>
-          <p class="blog"></p>
-          <div class="author-section" data-user-id="">
-            <span class="author-pic"></span>
-            <div class="author-info">
-              <p>Written by <strong></strong></p>
-              <p class="author-email"></p>
-            </div>
-          </div>
-        </article>
-      </template>
     </main>
     <footer class="footer">
       <p>&copy; 2024 MyBlog. All rights reserved.</p>
