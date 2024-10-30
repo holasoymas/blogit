@@ -6,7 +6,7 @@ require_once '../controllers/blockController.php';
 
 $blockController = new BlockController();
 
-$pid = isset($_GET['pid']) ? $_GET['pid'] : null;
+$blockTo = isset($_GET['blockTo']) ? $_GET['blockTo'] : null;
 
 $requestMethod = $_SERVER["REQUEST_METHOD"];
 
@@ -16,7 +16,7 @@ switch ($requestMethod) {
     $blockController->createBlock($data);
     break;
   case 'GET':
-    $blockController->getBlock($blockTo);
+    $blockController->getBlockAndRespond($blockTo);
   default:
     break;
 }
