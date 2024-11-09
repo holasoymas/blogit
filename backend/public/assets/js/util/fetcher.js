@@ -4,6 +4,7 @@ import {
   handleUnauthenticatedError,
   handleUnauthorizedError,
   handleUserNotFound,
+  handleDataConflict,
 } from "./errors.js";
 
 export async function fetchFromServer(endpoint, method, body = null) {
@@ -23,6 +24,8 @@ export async function fetchFromServer(endpoint, method, body = null) {
           return handleUnauthorizedError(errorData);
         case 404:
           return handleUserNotFound(errorData);
+        case 409:
+          return handleDataConflict(errorData);
         default:
           throw new Error(errorData.message || "Registration failed");
       }
