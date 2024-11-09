@@ -108,7 +108,32 @@ body {
 }
 
 .blog-content {
-  margin-bottom: 15px;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  /* margin-bottom: 15px; */
+}
+
+.post-like-comment {
+  display: flex;
+  align-items: center;
+  /* row-gap: 5px; */
+  gap: 40px;
+}
+
+.post-like {
+  display: flex;
+  align-items: center; /* Ensures each section's content is centered vertically */
+  gap: 5px;
+}
+.post-like-comment button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
 }
 
 /* Profile Section (Right) */
@@ -149,15 +174,34 @@ body {
   width: 100%;
   text-align: left;
   font-size: 16px;
-  /* border: 1px solid black; */
+  border-collapse: collapse; /* Ensures no extra lines */
 }
 
 .profile-stats td {
   padding: 5px 0;
 }
-tr:nth-child(odd) {
-  background-color: #dddddd;
+
+.profile-stats td:first-child {
+  text-align: left;
+  font-weight: bold; /* Optional: to make the labels stand out */
 }
+
+.profile-stats td:last-child {
+  text-align: right;
+  padding-right: 5px;
+}
+
+tr:nth-child(odd) {
+  background-color: #dddddd; /* Light grey background for odd rows */
+}
+
+/* Remove borders and lines */
+.profile-stats,
+.profile-stats th,
+.profile-stats td {
+  border: none; /* Ensure no borders are rendered */
+}
+
 /* Footer */
 
 .footer {
