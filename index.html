@@ -12,11 +12,18 @@
     <link rel="stylesheet" href="backend/public/assets/css/index.css" />
     <script type="module" src="backend/public/assets/js/pages/index.js"></script>
     <script type="module" src="backend/public/assets/js/util/genprofilepic.js"></script>
+    <script type="module" src="backend/public/assets/js/api/searchapi.js"></script>
   </head>
   <body>
     <nav class="navbar">
       <div class="navbar-left">
-        <div class="logo"><a href="#">BLOGIT</a></div>
+        <div class="logo"><a href="http://localhost/blogit/index.html">BLOGIT</a></div>
+      </div>
+      <div class="navbar-middle">
+        <div class="search-bar">
+          <input type="text" id="searchInput" placeholder="Search users..." autocomplete="off" />
+          <div id="suggestionsBox" class="suggestions-box"></div>
+        </div>
       </div>
       <div class="navbar-right">
         <ul class="nav-links">
@@ -29,7 +36,8 @@
         <div class="profile-menu">
           <div class="nav-profile-pic hidden"></div>
           <ul class="dropdown-menu">
-            <li><a href="#">Home Page</a></li>
+            <li><a href="">Home Page</a></li>
+            <li><a href="http://localhost/blogit/addblog.html">Add Blog</a></li>
             <li><a href="#" id="logout">Logout</a></li>
           </ul>
         </div>
