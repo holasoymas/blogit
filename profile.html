@@ -6,13 +6,15 @@
     <title>Simple Blog</title>
     <link rel="stylesheet" href="backend/public/assets/css/nav.css" />
     <link rel="stylesheet" href="backend/public/assets/css/style.css" />
+    <link rel="stylesheet" href="backend/public/assets/css/block.css" />
     <script type="module" src="backend/public/assets/js/pages/profile.js"></script>
     <script type="module" src="backend/public/assets/js/util/genprofilepic.js"></script>
+    <script type="module" src="backend/public/assets/js/pages/block.js"></script>
   </head>
   <body>
     <nav class="navbar">
       <div class="navbar-left">
-        <div class="logo"><a href="#">BLOGIT</a></div>
+        <div class="logo"><a href="http://localhost/blogit/index.html">BLOGIT</a></div>
       </div>
       <div class="navbar-right">
         <ul class="nav-links">
@@ -26,6 +28,7 @@
           <div class="nav-profile-pic hidden"></div>
           <ul class="dropdown-menu">
             <li><a href="#">Home Page</a></li>
+            <li><a href="http://localhost/blogit/addblog.html">Add Blog</a></li>
             <li><a href="#" id="logout">Logout</a></li>
           </ul>
         </div>
@@ -81,20 +84,24 @@
             <h3 class="profile-name"></h3>
             <table class="profile-stats">
               <tr>
+                <td>Email:</td>
+                <td class="profile-email"></td>
+              </tr>
+              <tr>
                 <td>Blogs:</td>
-                <td class="profile-blogs"></td>
+                <td class="profile-blogs">12</td>
               </tr>
               <tr>
                 <td>Likes:</td>
-                <td class="profile-likes"></td>
+                <td class="profile-likes">12</td>
               </tr>
               <tr>
                 <td>Comments:</td>
                 <td class="profile-comments"></td>
               </tr>
               <tr>
-                <td>Followers:</td>
-                <td class="profile-followers"></td>
+                <td>Joined On:</td>
+                <td class="profile-join-date">1995</td>
               </tr>
             </table>
           </div>
@@ -102,7 +109,11 @@
       </div>
       <!--closing of the profile container -->
     </div>
-    <!-- closing of the entire container-->
+    <!-- closing of the entire container -->
+    <div class="block-box">
+      <!-- <input type="text" placeholder="Enter text..." /> -->
+      <!-- <button>🚫 Request for block</button> -->
+    </div>
 
     <footer class="footer">
       <p>&copy; 2024 My Blog. All rights reserved.</p>
