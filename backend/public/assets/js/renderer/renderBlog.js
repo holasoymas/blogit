@@ -23,7 +23,7 @@ function renderBlogItem(blog) {
   // $template.querySelector(".blog-title").innerText = blog.title;
 
   const $blogLink = $template.querySelector(".blog-link");
-  $blogLink.href = `${getBaseDomainUrl()}/blog.html?pid=${blog.blog_id}`; // Assuming you have a route for blog posts like /blog/{id}
+  $blogLink.href = `${getBaseDomainUrl()}/blog.html?pid=${blog.blog_id}`;
   $blogLink.querySelector(".blog-title").innerText = blog.blog_title;
 
   $template.querySelector(".blog-meta").innerText = `Posted on ${formatDate(blog.blog_created_at)}`;
