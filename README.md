@@ -5,12 +5,12 @@ This is a semester project of TU(Trivhuvan University) **Project I** of _4th sem
 ## Entities
 
 - Database
-  ```
+  ```sql
   CREATE DATABASE IF NOT EXISTS blogit;
   ```
 - Users
 
-  ```
+  ```sql
   CREATE TABLE IF NOT EXISTS users (
   id CHAR(36) PRIMARY KEY DEFAULT (UUID()),
   fname VARCHAR(20) NOT NULL,
@@ -25,7 +25,7 @@ This is a semester project of TU(Trivhuvan University) **Project I** of _4th sem
 
 - Blogs
 
-  ```
+  ```sql
   CREATE TABLE IF NOT EXISTS blogs (
     pid CHAR(36) PRIMARY KEY DEFAULT (UUID()),
     uid CHAR(36) NOT NULL,  -- Match the data type with 'id' in users table
@@ -39,7 +39,7 @@ This is a semester project of TU(Trivhuvan University) **Project I** of _4th sem
 
 - Comments
 
-  ```
+  ```sql
   CREATE TABLE IF NOT EXISTS comments (
     cid char(36) PRIMARY KEY DEFAULT (UUID()) ,
     blog_id char(36) NOT NULL,
@@ -53,7 +53,7 @@ This is a semester project of TU(Trivhuvan University) **Project I** of _4th sem
 
 - Likes
 
-  ```
+  ```sql
   CREATE TABLE IF NOT EXISTS likes (
     lid char(36) PRIMARY KEY DEFAULT (UUID()),
     bid char(36) NOT NULL,
@@ -66,7 +66,7 @@ This is a semester project of TU(Trivhuvan University) **Project I** of _4th sem
 
 - Request For Block
 
-```
+```sql
    CREATE TABLE IF NOT EXISTS blocks (
     block_id char(36) PRIMARY KEY DEFAULT (uuid()),
     block_by char(36) NOT NULL,
