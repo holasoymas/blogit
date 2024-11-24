@@ -21,29 +21,47 @@ async function fetchSugessions(query) {
 
 export function renderSuggestions(suggestions) {
   suggestionsBox.innerHTML = "";
+
   if (suggestions.length === 0) {
     suggestionsBox.style.display = "none";
     return;
   }
 
-  suggestions.forEach((user) => {
+  suggestions.forEach((item) => {
     const suggestionItem = document.createElement("div");
     suggestionItem.classList.add("suggestion-item");
-    suggestionItem.textContent = user;
 
-    // Click event to select suggestion
+    const link = document.createElement("a");
+    link.style.textDecoration = "none";
+    link.style.color = "inherit";
+
+    switch (item.type) {
+      case "uid":
+        link.href = `http://localhost/blogit/profile.html?uid=${item.id}`;
+        break;
+      case "pid":
+        link.href = `http://localhost/blogit/blog.html?pid=${item.id}`;
+        break;
+      default:
+        break;
+    }
+
+    link.textContent = item.text;
+    suggestionItem.appendChild(link);
+
+    suggestionItem.classList.add("suggestion-hover");
+
     suggestionItem.addEventListener("click", () => {
-      searchInput.value = user;
-      suggestionsBox.style.display = "none"; // Hide suggestions
+      searchInput.value = item.text;
+      suggestionsBox.style.display = "none";
     });
 
     suggestionsBox.appendChild(suggestionItem);
   });
 
-  suggestionsBox.style.display = "block"; // Show the suggestions box
+  suggestionsBox.style.display = "block";
 }
 
-// Hide suggestions when clicking outside the input
 document.addEventListener("click", (e) => {
   if (!searchInput.contains(e.target) && !suggestionsBox.contains(e.target)) {
     suggestionsBox.style.display = "none";
