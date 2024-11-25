@@ -17,33 +17,48 @@ class UserController
   public function createUser($data)
   {
     $errors = [];
-
     $fname = $data['fname'];
     $lname = $data['lname'];
     $dob = $data['dob'];
     $email = $data['email'];
     $password = $data['password'];
 
-    if (empty($data['fname'])) {
-      $errors['fname'] = "Firstname is required";
+    if (empty($fname) || !preg_match('/^[A-Z][a-zA-Z]{3,}$/', $fname)) {
+      $errors['fname'] = "First name must start with a capital letter and should contain at least 4 letters";
     }
 
-    if (empty($data['lname'])) {
-      $errors['lname'] = "Lastname is required";
+    if (empty($lname) || !preg_match('/^[A-Z][a-zA-Z]{3,}$/', $lname)) {
+      $errors['lname'] = "Last name must start with a capital letter and should contain at least 4 letters";
     }
 
-    if (empty($data['dob'])) {
+    if (empty($dob)) {
       $errors['dob'] = "Date of birth is required";
+    } else {
+      try {
+        $dobDate = new DateTime($dob);
+        $today = new DateTime('now');
+        // $age = $today->diff($dobDate)->y;
+
+        if ($dobDate > $today) {
+          $errors['dob'] = "Date of birth cannot be in the future";
+        } elseif ($today->diff($dobDate)->y < 16) {
+          $errors['dob'] = "You must be at least 16 years old";
+        }
+      } catch (Exception $e) {
+        $errors['dob'] = "Invalid date format. Please use YYYY-MM-DD format";
+      }
     }
 
-    if (empty($data['email']) || !filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+    if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $errors['email'] = "A valid email is required";
     }
 
-    if (empty($data['password'])) {
+    if (empty($password)) {
       $errors['password'] = "Password is required";
-    } elseif (strlen($data['password']) < 6) {
+    } elseif (strlen($password) < 6) {
       $errors['password'] = "Password must be at least 6 characters long";
+    } elseif (!preg_match('/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$/', $password)) {
+      $errors['password'] = "Password must contain at least one uppercase letter, one number, and one special character (!@#$%^&*)";
     }
 
     if (!empty($errors)) {
