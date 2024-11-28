@@ -15,6 +15,39 @@ function renderBlog($container, blog) {
   $container.insertAdjacentHTML("beforeend", $blogItem.outerHTML);
 }
 
+export function renderPopularBlogs($container, blogs) {
+  const $section = document.querySelector($container);
+
+  if (!$section) {
+    console.error("Container not found!");
+    return;
+  }
+
+  const sortedBlogs = blogs
+    .map((blog) => ({
+      ...blog,
+      popularity: (blog.likes + blog.comments) / 2,
+    }))
+    .sort((a, b) => b.popularity - a.popularity)
+    .slice(0, 3);
+
+  const $list = $section.querySelector("ul");
+  $list.innerHTML = "";
+  // console.log(sortedBlogs);
+
+  sortedBlogs.forEach((blog) => {
+    const listItem = document.createElement("li");
+    listItem.innerHTML = `
+      <a href="http://localhost/blogit/blog.html?pid=${blog.blog_id}" 
+         class="popular-post-link" 
+         title="${blog.blog_title}">
+        ${blog.blog_title}
+      </a>
+    `;
+    $list.appendChild(listItem);
+  });
+}
+
 function renderBlogItem(blog) {
   const $template = document
     .querySelector("#blog-template")
