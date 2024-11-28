@@ -122,6 +122,16 @@ body {
   font-size: 16px;
 }
 
+.popular-post-link {
+  display: block;
+  color: #007bff; /* Adjust link color */
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px; /* Set the width to control truncation */
+}
+
 /* Footer styling */
 .footer {
   position: fixed;
