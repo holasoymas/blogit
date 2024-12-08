@@ -19,6 +19,23 @@ export async function registerUser(userData) {
   }
 }
 
+export async function updateUser(userData) {
+  try {
+    const res = await fetchFromServer("userRoute.php", "PUT", userData);
+    if (res.status === 400) {
+      renderValidationErrors("#register-form", res.errors);
+    }
+    if (res.userId) {
+      alert("User updated successfully");
+      window.location.href = `${getBaseDomainUrl()}/profile.html?uid=${encodeURIComponent(
+        res.userId,
+      )}`;
+    }
+  } catch (err) {
+    alert(err.message);
+  }
+}
+
 export async function loginUser(userData) {
   try {
     const res = await fetchFromServer("login.php", "POST", userData);
