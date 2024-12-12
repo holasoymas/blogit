@@ -6,8 +6,8 @@
     <title>Simple Blog</title>
     <link rel="stylesheet" href="backend/public/assets/css/nav.css" />
     <link rel="stylesheet" href="backend/public/assets/css/style.css" />
+    <link rel="stylesheet" href="backend/public/assets/css/index.css" />
     <link rel="stylesheet" href="backend/public/assets/css/blog.css" />
-    <!-- <script type="module" src="backend/"></script> -->
     <script type="module" src="backend/public/assets/js/pages/innerBlog.js"></script>
     <script type="module" src="backend/public/assets/js/pages/comment.js"></script>
     <script type="module" src="backend/public/assets/js/util/genprofilepic.js"></script>
@@ -19,8 +19,8 @@
       </div>
       <div class="navbar-right">
         <ul class="nav-links">
-          <li><a href="#">About Us</a></li>
-          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="http://localhost/blogit/aboutus.php">About Us</a></li>
+          <li><a href="http://localhost/blogit/policy.php">Privacy Policy</a></li>
           <li class="nav-login hidden">
             <a href="http://localhost/blogit/login.html">Login/Reg</a>
           </li>
@@ -29,6 +29,8 @@
           <div class="nav-profile-pic hidden"></div>
           <ul class="dropdown-menu">
             <li><a href="">Home Page</a></li>
+            <li><a href="http://localhost/blogit/addblog.html">Add Blog</a></li>
+            <li><a href="http://localhost/blogit/updateprofile.php">Update Profile</a></li>
             <li><a href="#" id="logout">Logout</a></li>
           </ul>
         </div>
@@ -41,6 +43,7 @@
           <article data-blog-id="">
             <h1></h1>
             <p class="blog-meta"></p>
+            <img src="" alt="" class="blog-image" />
             <p class="blog"></p>
             <div class="inner-like-btn">
               <svg
