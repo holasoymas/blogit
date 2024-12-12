@@ -85,19 +85,21 @@ We have used built in apache feature to make it protected.
 
 To do so install _(in linux)_
 
-`sudo apt-get apache2-utils`
+```bash
+sudo apt-get apache2-utils
+```
 
-create a file .htpasswd where you can store username and password to that protected route
+create a file `.htpasswd` where you can store username and password to that protected route
 
 ⚠️ **_WARNING_** : For security reasons, place it outside of where the browser can access, typically outside the htdocs folder.
 
-```
+```bash
 sudo htpasswd -c /opt/lampp/.htpasswd username
 # You will be prompted to type a password
 
 ```
 
-create a **_.htaccess_** file in a protected folder here in our case in **_/blogit/backend/public/admin_**
+create a `htaccess` file in a protected folder here in our case in **_/blogit/backend/public/admin_**
 And paste the below code.
 
 ```
