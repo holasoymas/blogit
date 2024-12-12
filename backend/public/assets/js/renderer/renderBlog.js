@@ -1,4 +1,4 @@
-import { getBaseDomainUrl } from "../config.js";
+import { getBaseApiUrl, getBaseDomainUrl } from "../config.js";
 import { handleToggleLikeBtn } from "../pages/like.js";
 import { formatDate } from "../util/dateFormatter.js";
 import { setProfilePicture } from "../util/genprofilepic.js";
@@ -60,6 +60,11 @@ function renderBlogItem(blog) {
   $blogLink.querySelector(".blog-title").innerText = blog.blog_title;
 
   $template.querySelector(".blog-meta").innerText = `Posted on ${formatDate(blog.blog_created_at)}`;
+  const $blogImage = $template.querySelector(".blog-image");
+  if ($blogImage) {
+    $blogImage.src = `${getBaseApiUrl()}/uploads/${blog.blog_image}`;
+    $blogImage.alt = blog.blog_title;
+  }
   $template.querySelector(".blog-content").innerText = blog.blog_content;
 
   $template.querySelector(".read-more-link").href = `${getBaseDomainUrl()}/blog.html?pid=${
@@ -92,6 +97,11 @@ async function renderFullBlog(blog) {
   $template.dataset.blogId = blog.pid;
   $template.querySelector("h1").innerText = blog.title;
   $template.querySelector(".blog-meta").innerText = `Posted on ${formatDate(blog.created_at)}`;
+  const $blogImage = $template.querySelector(".blog-image");
+  if ($blogImage) {
+    $blogImage.src = `${getBaseApiUrl()}/uploads/${blog.image}`;
+    $blogImage.alt = blog.title;
+  }
   $template.querySelector(".blog").innerText = blog.content;
 
   const $authorSection = $template.querySelector(".author-section");
