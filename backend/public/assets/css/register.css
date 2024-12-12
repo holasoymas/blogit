@@ -47,6 +47,10 @@ h2 {
   box-sizing: border-box;
 }
 
+.error-field {
+  color: red;
+}
+
 /* Login button */
 .login-btn {
   width: 100%;

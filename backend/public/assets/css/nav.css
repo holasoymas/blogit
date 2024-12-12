@@ -18,6 +18,12 @@ body {
 .navbar-left .logo {
   font-size: 24px;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.navbar-left .logo a {
+  text-decoration: none;
+  color: white;
 }
 
 /* Navigation links */
@@ -48,6 +54,11 @@ body {
 }
 
 /* Profile menu */
+
+.hidden {
+  display: none;
+}
+
 .profile-menu {
   position: relative;
   display: flex;
@@ -55,12 +66,19 @@ body {
   margin-left: 20px; /* Added margin to prevent overlap */
 }
 
-.profile-pic {
+.nav-profile-pic {
   width: 30px;
   height: 30px;
   border-radius: 50%;
   cursor: pointer;
   border: 2px solid white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+  color: #fff;
+  text-align: center;
 }
 
 /* Dropdown menu */

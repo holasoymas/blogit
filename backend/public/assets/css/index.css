@@ -54,10 +54,12 @@ body {
 }
 
 .blog-image {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 20px;
-  border-radius: 5px;
+  width: 100%; /* Ensures the image spans the width of the container */
+  height: auto; /* Maintains aspect ratio */
+  object-fit: cover; /* Ensures the image covers the area, but doesn't distort */
+  max-height: 400px; /* Limits the image height to 300px (you can adjust this based on your design) */
+  border-radius: 8px; /* Adds rounded corners to the image */
+  margin-bottom: 15px; /* Adds some space below the image */
 }
 
 .blog-content {
