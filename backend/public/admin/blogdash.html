@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <!-- <script type="module" src="adminPages.js"></script> -->
+    <script type="module" src="adminBlog.js"></script>
+    <title>Admin Dashboard</title>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="navbar-left">
+        <div class="logo">Admin Dashboard</div>
+      </div>
+      <div class="navbar-right">
+        <ul class="nav-links">
+          <li>
+            <a href="http://localhost/blogit/backend/public/admin/userdash.html">User Dash</a>
+          </li>
+          <li>
+            <a href="http://localhost/blogit/backend/public/admin/blogdash.html">Blog Dash</a>
+          </li>
+          <li><a href="http://localhost/blogit/aboutus.php">Manage About Us</a></li>
+          <li><a href="http://localhost/blogit/policy.php">Manage Privacy Policy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="dashboard">
+      <h1>Manage Users</h1>
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th>Reported By</th>
+            <th>Report Reason</th>
+            <th>Reported Blog</th>
+            <th>No of reports</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="blogs">
+          <!-- Add more rows here dynamically from server -->
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
