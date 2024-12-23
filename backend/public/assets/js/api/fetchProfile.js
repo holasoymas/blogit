@@ -20,6 +20,17 @@ export async function fetchProfile() {
     renderUserProfile(".profile-section", user);
     renderBlogs(".blog-section", blogs);
     const isBlockedBy = await hasBlocked(uid);
+    if (uid == loggedInUser) {
+      document.querySelector(".block-box").style.display = "none";
+    }
+    if (uid != loggedInUser) {
+      document.querySelectorAll(".delete-btn").forEach((btn) => {
+        btn.style.display = "none";
+      });
+      document.querySelectorAll(".update-btn").forEach((btn) => {
+        btn.style.display = "none";
+      });
+    }
     renderBlock(".block-box", isBlockedBy);
     //after rendering only init the click event
     initBlock();
