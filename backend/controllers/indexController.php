@@ -2,6 +2,7 @@
 
 require_once '../models/indexModel.php';
 require_once '../config/db.php';
+require_once '../services/SessionManager.php';
 
 class IndexController
 {
@@ -22,17 +23,13 @@ class IndexController
         echo json_encode(['error' => "NO blogs found"]);
         exit;
       }
-
-      $jsonResponse = json_encode($blogs);
-
-      if (json_last_error() !== JSON_ERROR_NONE) {
-        http_response_code(500);
-        echo json_encode(['error' => 'Failed to encode JSON: ' . json_last_error_msg()]);
-        exit;
-      }
+      $res = [
+        "blogs" => $blogs,
+        "loggedInUser" => SessionManager::getSession("uid"),
+      ];
 
       http_response_code(200);
-      echo $jsonResponse;
+      echo json_encode($res);
     } catch (Exception $e) {
       http_response_code(500);
       echo json_encode(["error" => $e->getMessage()]);

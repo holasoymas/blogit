@@ -1,5 +1,4 @@
 <?php
-// controllers/userController.php
 require_once '../models/profileModel.php';
 require_once '../config/db.php';
 require_once '../services/SessionManager.php';
@@ -16,10 +15,7 @@ class ProfileController
 
   public function getUserProfileById($uid)
   {
-    // Get the user data from the model
     $userData = $this->profileModel->getUserProfileById($uid);
-    // echo json_encode(["uid" => $uid]);
-    // Check if user data is not null
     if ($userData["user"]) {
       $response = [
         "user" => $userData["user"],
@@ -31,7 +27,7 @@ class ProfileController
     } else {
       // Handle the case where no user data is found
       http_response_code(404);
-      echo json_encode(["errors" => "User not found"]);
+      echo json_encode(["error" => "User not found"]);
     }
   }
 }

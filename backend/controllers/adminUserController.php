@@ -1,6 +1,7 @@
 <?php
 require_once '../config/db.php';
 require_once '../models/adminUserModel.php';
+require_once "../services/SessionManager.php";
 
 class AdminUserController
 {
@@ -14,6 +15,7 @@ class AdminUserController
 
   public function getUsers()
   {
+    SessionManager::setSession("admin", "admin123");
     $users = $this->adminUser->getUsers();
 
     if (!$users) {
