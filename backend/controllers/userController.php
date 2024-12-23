@@ -14,31 +14,21 @@ class UserController
     $this->userModel = new UserModel($db);
   }
 
-  public function createUser($data)
+  public function returnValidateErr($fname, $lname, $dob, $email, $password)
   {
     $errors = [];
-    $fname = $data['fname'];
-    $lname = $data['lname'];
-    $dob = $data['dob'];
-    $email = $data['email'];
-    $password = $data['password'];
-
     if (empty($fname) || !preg_match('/^[A-Z][a-zA-Z]{3,}$/', $fname)) {
       $errors['fname'] = "First name must start with a capital letter and should contain at least 4 letters";
     }
-
     if (empty($lname) || !preg_match('/^[A-Z][a-zA-Z]{3,}$/', $lname)) {
       $errors['lname'] = "Last name must start with a capital letter and should contain at least 4 letters";
     }
-
     if (empty($dob)) {
       $errors['dob'] = "Date of birth is required";
     } else {
       try {
         $dobDate = new DateTime($dob);
         $today = new DateTime('now');
-        // $age = $today->diff($dobDate)->y;
-
         if ($dobDate > $today) {
           $errors['dob'] = "Date of birth cannot be in the future";
         } elseif ($today->diff($dobDate)->y < 16) {
@@ -48,11 +38,9 @@ class UserController
         $errors['dob'] = "Invalid date format. Please use YYYY-MM-DD format";
       }
     }
-
     if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $errors['email'] = "A valid email is required";
     }
-
     if (empty($password)) {
       $errors['password'] = "Password is required";
     } elseif (strlen($password) < 6) {
@@ -60,6 +48,18 @@ class UserController
     } elseif (!preg_match('/^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$/', $password)) {
       $errors['password'] = "Password must contain at least one uppercase letter, one number, and one special character (!@#$%^&*)";
     }
+    return $errors;
+  }
+
+  public function createUser($data)
+  {
+    $fname = $data['fname'];
+    $lname = $data['lname'];
+    $dob = $data['dob'];
+    $email = $data['email'];
+    $password = $data['password'];
+
+    $errors = $this->returnValidateErr($fname, $lname, $dob, $email, $password);
 
     if (!empty($errors)) {
       http_response_code(400);
@@ -76,6 +76,41 @@ class UserController
     http_response_code(201);
     echo json_encode(["message" => "User created successfully", "userId" => $userId]);
   }
+
+
+  public function updateUser($data)
+  {
+
+    $uid = SessionManager::getSession("uid");
+    if (!$uid) {
+      http_response_code(401);
+      echo json_encode(["error" => "Pleasse login to update"]);
+      return;
+    }
+
+    $fname = $data['fname'];
+    $lname = $data['lname'];
+    $dob = $data['dob'];
+    $email = $data['email'];
+    $password = $data['password'];
+
+    $errors = $this->returnValidateErr($fname, $lname, $dob, $email, $password);
+
+    if (!empty($errors)) {
+      http_response_code(400);
+      echo json_encode([
+        "status" => "error",
+        "errors" => $errors
+      ]);
+      return;
+    }
+
+    $userId = $this->userModel->updateUser($uid, $fname, $lname, $dob, $email, $password);
+    // SessionManager::setSession("uid", $userId);
+    http_response_code(201);
+    echo json_encode(["message" => "User updated successfully", "userId" => $userId]);
+  }
+
 
   public function getUserById($uid)
   {

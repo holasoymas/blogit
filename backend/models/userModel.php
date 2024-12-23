@@ -1,5 +1,4 @@
 <?php
-// models/userModel.php
 class UserModel
 {
   private $pdo;
@@ -24,6 +23,21 @@ class UserModel
     return $uuid;
   }
 
+  public function updateUser($uid, $fname, $lname, $dob, $email, $password)
+  {
+    try {
+      $sql = "UPDATE users 
+            SET fname = :fname, lname = :lname, dob = :dob, email = :email, password = :password 
+            WHERE id = :uid";
+      $stmt = $this->pdo->prepare($sql);
+      $stmt->execute(['fname' => $fname, 'lname' => $lname, 'dob' => $dob,  'email' => $email, 'password' => $password, 'uid' => $uid]);
+      return $uid;
+    } catch (PDOException $e) {
+      error_log("Database error: " . $e->getMessage());
+      return null;
+    }
+  }
+
   public function getUserById($uid)
   {
     try {
@@ -45,7 +59,7 @@ class UserModel
     $stmt = $this->pdo->prepare($sql);
     $stmt->execute(['email' => $email, 'password' => $password]);
     $uuid = $stmt->fetchColumn();
-    return $uuid;
+    return $uuid ? $uuid : null;
   }
 
   public function deleteUser($uid)

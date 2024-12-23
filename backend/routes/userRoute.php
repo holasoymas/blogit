@@ -1,6 +1,4 @@
 <?php
-// var_dump($_SERVER["REQUEST_METHOD"]);
-// exit;
 header('Content-Type: application/json');
 require_once '../controllers/userController.php';
 
@@ -15,10 +13,12 @@ if ($requestMethod == 'POST') {
   $userController->createUser($data);
 }
 
-if ($requestMethod == 'GET') {
-  // var_dump($_SERVER["REQUEST_METHOD"]);
-  // exit;
+if ($requestMethod == 'PUT') {
+  $data = json_decode(file_get_contents("php://input"), true);
+  $userController->updateUser($data);
+}
 
+if ($requestMethod == 'GET') {
   if ($uid) {
     $userController->getUserById($uid);
   } else {
