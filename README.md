@@ -64,7 +64,7 @@ This is a semester project of TU(Trivhuvan University) **Project I** of _4th sem
   );
   ```
 
-- Request For Block
+- Request For Block (Users)
 
 ```sql
    CREATE TABLE IF NOT EXISTS blocks (
@@ -76,6 +76,40 @@ This is a semester project of TU(Trivhuvan University) **Project I** of _4th sem
     FOREIGN KEY (block_by) REFERENCES users(id) ON DELETE CASCADE,
     FOREIGN KEY (block_to) REFERENCES users(id) ON DELETE CASCADE,
    );
+```
+
+- Request For Block (Blogs)
+
+```sql
+  CREATE TABLE IF NOT EXISTS report_blogs(
+  report_id char(36)  PRIMARY KEY DEFAULT (uuid()),
+  reported_blog char(36) NOT NULL,
+  reported_by char(36) NOT NULL,
+  report_reason VARCHAR(200) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY(reported_by) REFERENCES users(id) ON DELETE CASCADE,
+  FOREIGN KEY(reported_blog) REFERENCES blogs(pid) ON DELETE CASCADE,
+);
+```
+
+- About us page (Managed by admin only)
+
+```sql
+  CREATE TABLE about_us (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  content LONGTEXT NOT NULL,
+  last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+```
+
+- Privacy Policy Page (Managed by admin only)
+
+```sql
+  CREATE TABLE privacy_policy (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  content LONGTEXT NOT NULL,
+  last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
 ```
 
 ## Admin Part
