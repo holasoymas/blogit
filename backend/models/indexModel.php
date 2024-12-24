@@ -16,6 +16,7 @@ class IndexModel
         SELECT 
         b.pid AS blog_id, 
         b.title AS blog_title, 
+        b.image AS blog_image,
         b.content AS blog_content, 
         b.created_at AS blog_created_at,
         COUNT(DISTINCT l.lid) AS blog_likes, 
